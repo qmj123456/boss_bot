@@ -1,0 +1,68 @@
+recruitment:
+  # 招聘岗位：渲染师（3C 壳膜类产品渲染，2026.11.12 口径）
+  job_name: "渲染"
+  # 打招呼后发送的后续话术（优先级高于 config/message.yaml）
+  greet_message: |
+    哈喽，我们正在招聘渲染师。
+    产品为壳膜类，目前京东排名前三！主做京东，天猫平台！设计团队全部是大厂出身，成长氛围超强！
+    每年业绩增长！岗位稳定！有成熟晋升机制！重视质量不做批量图！
+    公司有AI应用工程师专岗，免费帮助你AI能力大幅提升！
+    大小周。工作日不加班！
+    入职上社保
+    薪资能够满足您的期望，节假日福利多多，团队氛围超级棒！
+    方便发下简历和作品详细给您介绍下我们岗位吗？
+  boss_display_name: ${BOSS_JOB_NAME_RENDER}
+  boss_match_names:
+    - "电商渲染师（3c类目）"
+
+  experience_required: "简历任意位置（技能、软件、项目、工作内容均可）必须同时出现渲染软件关键词（ks 或 keyshot）与建模软件关键词（犀牛 或 rhino），缺任一即淘汰。"
+
+  degree_required: "不筛学历。"
+
+  skill_requirements:
+    - 简历任意位置必须出现 ks 或 keyshot 中的任意一个（不区分大小写）
+    - 简历任意位置必须出现 犀牛 或 rhino 中的任意一个（不区分大小写）
+    - 以上两项必须同时满足，缺一即淘汰
+    - 不要求数据成果，也不筛学历
+
+  additional_requirements: |
+    【完整简历必须全部满足】
+    - 简历任意位置（技能、软件工具、项目经历、工作内容、自我介绍均可）必须出现 KeyShot 相关关键词：ks 或 keyshot。
+    - 简历任意位置必须出现 Rhino 相关关键词：犀牛 或 rhino。
+    - 两项必须同时满足；任一缺失直接淘汰。
+    - 不筛学历，不要求数据成果，不要求竞品经历。
+
+    【去重、执行与停止】
+    - 卡片通过后立即查看完整简历；完整简历通过并完成去重后立即打招呼。
+    - 若目标未完成，需要累计检查至少500名不重复候选人才能正常结束。
+    - 遇到验证码、登录失效、额度、风控或平台确实没有更多候选人，须异常停止并明确汇报。
+    - 只有获得当轮明确授权才能联系候选人；绝不自动点“不合适”。
+
+  # 完整简历分析：只判断求职状态；软件关键词写在完整简历要求里由 AI 读取截图判断。
+  resume_analysis:
+    employment_status_whitelist: ["离职-随时到岗"]
+
+  # 卡片预筛：只做卡片可见硬条件判断，不做评分。
+  card_prescreen:
+    require_work_experience: true
+    enabled: true
+    active_status_keywords: ["刚刚活跃", "在线"]
+    max_age: 32
+    city_keyword: 深圳
+    # 最近一份工作结束时间 >= 2026.08，或明确写“至今”。
+    latest_work_end_not_before: "2026.08"
+    # 期望薪资下限 >= 9K（面议放行，交给简历阶段）。
+    salary_low_min: 9000
+    role_keywords: ["3D设计师", "渲染"]
+    # 最近两份工作经历岗位包含以下任一即可进入简历阶段
+    recent_work_limit: 2
+    recent_work_position_keywords: ["3D设计师", "渲染"]
+
+  # BOSS 推荐页右上角筛选面板配置（每次切换岗位后自动应用）
+  boss_filter:
+    not_viewed_14d: true
+    active_status:
+      - 刚刚活跃
+      - 在线
+    employment_status:
+      - 离职-随时到岗

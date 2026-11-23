@@ -1,0 +1,80 @@
+recruitment:
+  job_name: "tiktok运营"
+  greet_message: |
+    哈喽，我们在招tiktok运营！
+    公司重点项目为tiktok！资金充足！年gmv过亿！
+    精品运营！
+    无责底薪+提成+年终奖
+    岗位优势：
+    1、有成熟的合伙人晋升机制；
+    2、成熟的产品开发团队，能充分支持选品决策，稳定的供应链，重视产品质量。
+    3、强大的内容团队
+    4、高竞争力的薪酬制度，店铺月度销售额100W，岗位年收入在30~50W
+    5、这里赋予你最大的运营权限，充分信任你的能力，让你自由掌控策略，发挥无限潜力！
+    6、团队氛围活跃简单，互相分享学习是常态！
+    7、全开放AI资源，不限token！
+    方便发份简历详细聊下吗
+  boss_display_name: ${BOSS_JOB_NAME_TIKTOK_OPERATION}
+  boss_match_names:
+    - "TikTok运营"
+    - "tiktok运营"
+
+  degree_required: "不筛学历。"
+  experience_required: "先从岗位名称或该段工作内容包含tiktok（忽略大小写）的经历中，选择在职周期最长的一段；该段须满10个月，才进入后续判断。无匹配经历或时长不足、无法确认均不通过。后续所有条件须在该同一段经历满足。"
+
+  skill_requirements:
+    - 先从岗位名称或该段工作内容包含tiktok（忽略大小写）的经历中，选择在职周期最长的一段；该段须满10个月，才进入后续判断。无匹配经历或时长不足、无法确认均不通过。
+    - 该段工作地区/所负责市场必须明确包含美国、美区、北美、加拿大、墨西哥至少一个
+    - 该段工作内容必须至少有2种不同的指定指标带数字成果：GMV、GSV、ROI、销售额、成交额、月销、日销、订单量、转化率、销量、毛利率、利润率、排名
+    - 该段工作内容必须包含3C、数码、3C数码至少一个
+
+  additional_requirements: |
+    【卡片预筛】
+    - 最近两份工作经历中，至少一份岗位名称包含“tiktok”“新媒体”或“跨境”（tiktok 忽略大小写），且该同一段经历在职不少于12个月；不得用其他岗位的时长补足。
+
+    【完整简历必须全部满足】
+    1. 先从岗位名称或该段工作内容包含tiktok（忽略大小写）的经历中，选择在职周期最长的一段；该段须满10个月，才进入后续判断。无匹配经历或时长不足、无法确认均不通过。
+    2. 平台要求必须来自该段岗位名称或工作内容，不能借用其他经历、技能标签或求职期望。
+    3. 该段工作地区/所负责市场必须明确包含“美国”“美区”“北美”“加拿大”“墨西哥”至少一个；不得借用其他经历或候选人居住地。
+    4. 该段工作内容必须至少有2种不同指标带明确数字成果。有效指标仅限：GMV、GSV、ROI、销售额、成交额、月销、日销、订单量、转化率、销量、毛利率、利润率、排名。
+    5. 该段工作内容必须明确包含“3C”“数码”或“3C数码”至少一个。
+    6. 仅出现指标名称而没有数字不算；不同经历中的条件不得拼接。
+
+    【去重、执行与停止】
+    - 卡片通过后才查看完整简历；卡片信息缺失时标记“待确认”，不打开完整简历。
+    - 完整简历通过并完成去重后才允许打招呼。
+    - 只有获得当轮明确授权才能联系候选人；绝不自动点“不合适”。
+
+  resume_analysis:
+    platform_experience:
+      keywords:
+      - tiktok
+      min_months: 10
+      select: longest
+      regions:
+      - 美国
+      - 美区
+      - 北美
+      - 加拿大
+      - 墨西哥
+    employment_status_whitelist: []
+
+  card_prescreen:
+    require_work_experience: true
+    enabled: true
+    active_status_keywords: ["刚刚活跃", "在线"]
+    max_age: 35
+    city_keyword: 深圳
+    role_keywords: ["跨境电商运营", "tiktok", "TikTok", "TIKTOK", "新媒体"]
+    latest_work_end_not_before: "2026.08"
+    recent_work_limit: 2
+    # 近两份卡片工作经历中，岗位名称命中其一的同一段须满12个月。
+    recent_work_position_keywords: ["tiktok", "新媒体", "跨境"]
+    recent_work_min_months: 12
+
+  boss_filter:
+    not_viewed_14d: true
+    active_status:
+      - 刚刚活跃
+      - 在线
+    age_max: 35

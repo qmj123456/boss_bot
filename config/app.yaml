@@ -1,0 +1,96 @@
+app:
+  log_level: INFO
+  logging:
+    dir: logs
+    max_bytes: 5242880
+    backup_count: 5
+    console: false
+  database:
+    path: data/hr_agent.db
+  run_mode: production
+  timezone: Asia/Shanghai
+  default_job_name: 全职主播
+  scheduler:
+    enabled: true
+    # 由 Windows 任务计划负责固定时间触发；这里控制每次触发后做多少事。
+    # 设为 true 后，定时任务会自动确认 run 并继续抓取/打招呼。
+    allow_auto_confirm: false
+    # 自动执行时按顺序处理这些岗位；每个岗位会自动读取 .env 中对应的 BOSS_JOB_ID_*。
+    # 如果命令行传了 --job-name，则只执行指定岗位。
+    # count：本岗位本次最多抓取/评估多少候选人。
+    # max_greetings：本岗位本次最多真实打招呼多少人（单轮上限）。
+    # daily_greet_target：本岗位每日打招呼总目标。--daemon 模式下轮询直到达标。
+    #   未配置或 0 时，daemon 模式用 max_greetings 作为每日目标。
+    jobs:
+      - name: 全职主播
+        count: 30
+        max_greetings: 0
+        daily_greet_target: 0
+        time_window: ["07:00", "22:00"]
+      - name: 兼职主播
+        count: 50
+        max_greetings: 0
+        daily_greet_target: 0
+        time_window: ["07:00", "20:00"]
+      - name: 运营
+        count: 20
+        max_greetings: 0
+        daily_greet_target: 0
+        time_window: ["09:00", "24:00"]
+      # 新岗位先注册为可配置项；设置配额前不会被定时任务自动联系候选人。
+      - name: 亚马逊运营
+        count: 30
+        max_greetings: 60
+        daily_greet_target: 60
+        time_window: ["09:00", "24:00"]
+      - name: tiktok运营
+        count: 30
+        max_greetings: 0
+        daily_greet_target: 0
+        time_window: ["09:00", "24:00"]
+      - name: 初级剪拍
+        count: 30
+        max_greetings: 0
+        daily_greet_target: 0
+        time_window: ["07:00", "24:00"]
+      - name: 运营助理
+        count: 30
+        max_greetings: 60
+        daily_greet_target: 60
+        #time_window: ["09:00", "18:00"]
+      - name: 运营助理（前期需要在中控岗位轮岗）
+        count: 0
+        max_greetings: 0
+        daily_greet_target: 0
+        #time_window: ["09:00", "14:00"]
+      - name: 高级剪拍
+        count: 30
+        max_greetings: 0
+        daily_greet_target: 0
+        time_window: ["09:00", "24:00"]
+      # 新岗位占位：补齐 BOSS/飞书配置并设置配额后再启用自动执行。
+      - name: 客服
+        count: 30
+        max_greetings: 0
+        daily_greet_target: 0
+        time_window: ["09:00", "24:00"]
+      # 2026-11-12 新增：编导（抖音信息流方向），每日 50 个招呼。
+      - name: 编导
+        count: 30
+        max_greetings: 50
+        daily_greet_target: 50
+        time_window: ["09:00", "24:00"]
+      # 2026-11-12 新增：渲染（3C 壳膜类），每日 20 个招呼。
+      - name: 渲染
+        count: 30
+        max_greetings: 20
+        daily_greet_target: 20
+        time_window: ["09:00", "24:00"]
+#    count: 10
+#    max_greetings: 3
+    dry_run: false
+    skip_feishu: false
+    notifications:
+      enabled: true
+      desktop: true
+      feishu_bot: true

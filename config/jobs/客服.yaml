@@ -1,0 +1,69 @@
+recruitment:
+  job_name: "客服"
+  greet_message: |
+    您好，公司产品为高价位手机壳，岗位售前售后都会涉及（售后工作不扯皮直接退换货），日均接待量200左右，
+    公司位置在民治，展滔科技大厦。
+    试用期3个月
+    无责底薪5000+提成，综合月收入6000+
+    工作时间08:00-17:00/12:00-21:00/16:00-23:59，月休4-5天，三班倒，按需排班，打车报销
+    入职缴纳社保
+    这边感兴趣的话方便发一份简历详细了解一下嘛。
+  boss_display_name: ${BOSS_JOB_NAME_CUSTOMER_SERVICE}
+  boss_match_names:
+    - "客服"
+
+  degree_required: "大专及以上。"
+  experience_required: "卡片最近一份工作须结束于2026年7月或之后，或明确标注‘至今’；近两份工作中至少一份岗位名称包含‘客服’且在职不少于8个月。完整简历再从所有客服经历中选择在职周期最长的一段作为唯一核验经历；该段须包含售前或售后，并具备至少2种指定客服指标的数字成果。"
+
+  skill_requirements:
+    - 从岗位名称包含“客服”的工作经历中选择在职周期最长的一段作为唯一核验经历
+    - 该段工作内容必须明确包含“售前”或“售后”至少一个
+    - 该段工作内容必须至少有2种不同的指定指标带数字成果：询单量、好评率、售后纠纷率、挽单率、响应时长、满意度、团队排名、转化、售后
+    - 在线简历期望薪资下限必须不低于5K且不超过6K；面议可进入下一步判断，未展示或无法确认均不通过
+
+  additional_requirements: |
+    【卡片预筛（不满足就不打开简历）】
+    1. 最近一份工作经历的结束时间必须为2026.07或之后，或明确标注“至今”；结束时间缺失、无法解析或早于2026.07均拦截。
+    2. 仅检查最近两份工作经历，其中至少一份岗位名称必须包含“客服”，且该同一段经历的在职时长必须达到8个月或以上；岗位名称和时长不得跨经历拼接。
+
+    【完整简历必须全部满足】
+    1. 在所有岗位名称包含“客服”的工作经历中，选择在职周期最长的一段；后续条件只核验这同一段经历，禁止跨经历拼接。
+    2. 该段工作内容必须明确包含“售前”或“售后”至少一个。
+    3. 该段工作内容必须至少有2种不同指标带明确数字成果。有效指标仅限：询单量、好评率、售后纠纷率、挽单率、响应时长、满意度、团队排名、转化、售后。
+    4. 仅出现指标名称而没有数字不算；同一指标重复出现只计1项；不同经历中的条件不得拼接。
+    5. 在线简历中的期望薪资下限必须不低于5K且不超过6K；面议可进入下一步判断，未展示或无法确认均直接不通过。
+
+    【去重、执行与停止】
+    - 卡片通过后才查看完整简历；卡片不满足或信息缺失时标记“待确认”，不打开完整简历。
+    - 完整简历通过并完成岗位级去重后才允许打招呼。
+    - 只有获得当轮明确授权才能联系候选人；绝不自动点“不合适”。
+
+  resume_analysis:
+    employment_status_whitelist: []
+    expected_salary_min: 5000
+    expected_salary_max: 6000
+    expected_salary_basis: lower_bound
+    expected_salary_accept_negotiable: true
+
+  card_prescreen:
+    require_work_experience: true
+    enabled: true
+    active_status_keywords: ["刚刚活跃", "在线"]
+    max_age: 27
+    min_degree: "大专"
+    city_keyword: "深圳"
+    role_keywords: ["客服"]
+    latest_work_end_not_before: "2026.07"
+    recent_work_limit: 2
+    recent_work_position_keywords: ["客服"]
+    recent_work_min_months: 8
+
+  boss_filter:
+    not_viewed_14d: true
+    active_status:
+      - 刚刚活跃
+      - 在线
+    employment_status:
+      - 离职-随时到岗
+    age_max: 27
+    degree: "大专"

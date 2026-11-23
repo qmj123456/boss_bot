@@ -1,0 +1,57 @@
+# 招聘自动化性能参数。
+# 时间单位均为秒；范围字段采用 [最小值, 最大值]，运行时在范围内随机取值。
+# 修改本文件后，下一次启动的任务自动生效。
+performance:
+  screenshot:
+    # 单个屏幕截图的总尝试次数：2 = 首次失败后最多再重试 1 次。
+    total_attempts: 2
+    # 在线简历打开后、开始读取滚动区域前的等待范围。
+    initial_wait_seconds: [0.6, 1.0]
+    # 每次滚动简历后至少等待多久，再检查滚动位置和页面高度是否稳定。
+    segment_wait_seconds: [0.4, 0.8]
+    # 截图首次失败后，第二次截图前的等待时间。
+    retry_delay_seconds: 0.6
+    # 每次向下移动的视口比例。最大值必须小于 1，确保相邻截图有重叠、不会漏截。
+    scroll_ratio: [0.68, 0.78]
+    # 稳定性轮询上限和轮询间隔。达到稳定状态会提前结束，不会固定等满。
+    settle_max_polls: 8
+    settle_poll_interval_seconds: 0.1
+    # 到达疑似末屏后再等待一次，防止懒加载使简历高度继续增长。
+    bottom_settle_seconds: 0.35
+    # JPEG 质量。85 可减少编码和上传体积，同时保留中文小字清晰度。
+    jpeg_quality: 85
+    # 单份简历最多允许的分段截图数；超过即判定未完整截取并记录失败。
+    max_screenshots: 40
+
+  ai:
+    # AI 分析总尝试次数：3 = 首次失败后复用同一份截图最多再重试 2 次。
+    total_attempts: 3
+    # 普通解析失败使用此等待；503/429/超时按指数退避，避免立即撞上同一轮繁忙。
+    retry_delay_seconds: 2.0
+    retry_max_delay_seconds: 8.0
+
+  browser:
+    # 鼠标移到候选人卡片后、点击前的短暂停留范围。
+    card_click_wait_seconds: [0.2, 0.5]
+    # 旧队列模式搜索候选人时，每次滚动后的等待范围。
+    card_search_scroll_wait_seconds: [0.8, 1.5]
+    # 推荐列表每次滚动后的等待范围，用于接收候选人接口元数据。
+    list_scroll_wait_seconds: [0.8, 1.5]
+    # 当前可见卡片暂时没有接口元数据时，每次重查的等待时间。
+    metadata_wait_seconds: 0.3
+    # 候选人处理失败、准备再次处理原卡片前的基础等待时间。
+    candidate_retry_delay_seconds: 0.5
+    # 详情 DOM 已确认关闭后，到处理下一张卡片前的等待范围。
+    close_wait_seconds: [0.2, 0.5]
+    # 点击“打招呼”后等待按钮变成“继续沟通”的基础等待范围。
+    greeting_transition_wait_seconds: [0.8, 1.4]
+    # 点击“继续沟通”后等待聊天输入框挂载的等待范围。
+    chat_mount_wait_seconds: [0.5, 1.0]
+
+  legacy_throttling:
+    # 旧下载入口中，相邻候选人之间的等待范围。
+    candidate_wait_seconds: [1.0, 2.0]
+    # 每处理多少名候选人执行一次额外节流；0 表示关闭额外节流。
+    pause_every: 10
+    # 额外节流的等待范围。仅旧下载入口使用；实时逐卡入口不使用。
+    pause_seconds: [8.0, 15.0]

@@ -1,0 +1,31 @@
+ai:
+  # DeepSeek 提供 OpenAI 兼容接口，所以 provider 继续使用 openai 适配器。
+  provider: openai
+  api_key: ${OPENAI_API_KEY}
+  # 使用 DeepSeek 时，.env 中建议配置：
+  # OPENAI_BASE_URL=https://api.deepseek.com
+  base_url: ${OPENAI_BASE_URL}
+  # DeepSeek 官方 OpenAI 兼容模型。若你的账号后台给的是其他模型名，以后台为准。
+  model: deepseek-chat
+#  # 在线简历截图使用 DeepSeek 官方视觉模型；可在 .env 中用
+#  # DEEPSEEK_VISION_MODEL 覆盖为 API 网关提供的其他视觉模型名。
+  vision_model: deepseek-v4-flash-vision-exp
+#  model: qwen3.7-plus
+#  vision_model: qwen3.7-plus
+  temperature: 0.2
+  max_tokens: 1200
+  # 视觉模型需要逐条阅读多屏简历，单独提高输出上限，避免 JSON reason 被截断。
+  # 推理型模型会先消耗 reasoning tokens：4000 常被思考过程吃满、content 为空
+  # （finish_reason=length），因此默认给到 8000。
+  vision_max_tokens: 8000
+  # 截断重试时每次追加的预算与封顶值：8000 → 12000 → 16000。
+  vision_max_tokens_step: 4000
+  vision_max_tokens_ceiling: 16000
+  timeout_seconds: 60
+  # 在线简历视觉分析单次请求超时。失败后是否重试及次数由
+  # config/performance.yaml -> performance.ai 控制。
+  # 超长简历（多屏拼接）单次常需 40-50s，40s 会稳定超时，提到 60s。
+  vision_timeout_seconds: 60
+  prompts:
+    resume_analysis: review_resume.md
+    message_generation: generate_message.md

@@ -1,0 +1,75 @@
+recruitment:
+  # 招聘岗位：初级拍剪（26届/27届应届生方向，2026.11.3 口径）
+  job_name: "初级剪拍"
+  # 打招呼后发送的后续话术（优先级高于 config/message.yaml）
+  greet_message: |
+    哈喽，我们在招剪辑实习生。
+    不做长期高度重复的内容！素材内容多样不限制！AI工具免费畅用！
+    工作内容为内容创作、剪辑成片、数据复盘全流程帮助你建立内容判断能力！
+    产品为高客单价手机壳，店铺排名在同类目前三！盈利状况持续增长！
+    有成熟晋升机制！运营一对一带教！
+    可开实习证明！可开三方！可以转正！
+    大小周！
+    可以发份简历和作品链接给你详细介绍下我们岗位情况哈！
+  boss_display_name: ${BOSS_JOB_NAME_JUNIOR_SHOOT_EDIT}
+  boss_match_names:
+    - "短视频剪辑（接受27届/可转正/成熟带教）"
+
+  experience_required: "27届应届生（education 最近一段 end 年份为2027），非27届直接淘汰。近两份工作经历中，至少有一段工作经历具备至少1项数据成果。"
+
+  # 学历由 BOSS 面板「公办本科 + 只看第一学历」把关，AI 不再额外判断学历。
+
+  skill_requirements:
+    - 27届应届生身份（education 最近一段 end 年份为2027）
+    - 近两份工作经历中，至少有一段工作经历具备至少1项数据成果
+    - 数字仅代表量词（名量词、动量词、产出量词）、日期或0-1的，不算数据成果；金额、消耗算有效数据成果
+
+  additional_requirements: |
+    【完整简历必须全部满足（27届）】
+    - education 中最近一段教育的 end 年份必须为 2027，否则直接淘汰。
+    - 近两份工作经历中，至少有一段工作经历具备至少1项数据成果。
+    - 数字仅代表量词（名量词、动量词、产出量词）、日期或0-1的，不算数据成果；金额、消耗算有效数据成果。
+    - 不判断学历（学历已在卡片阶段按「仅限本科」筛过，AI 不再额外判断）。
+    - 不判断求职状态，也不要求英语四六级。
+
+    【去重、执行与停止】
+    - 卡片通过后立即查看完整简历；完整简历通过并完成去重后立即打招呼。
+    - 若目标未完成，需要累计检查至少500名不重复候选人才能正常结束。
+    - 遇到验证码、登录失效、额度、风控或平台确实没有更多候选人，须异常停止并明确汇报。
+    - 只有获得当轮明确授权才能联系候选人；绝不自动点“不合适”。
+
+  # 完整简历分析：求职状态不判断。
+  resume_analysis:
+    recent_outcomes:
+      limit: 2
+      min_experiences: 1
+      min_metrics: 1
+      mode: any
+      exclude_quantity_only: true
+      distinct_metrics: false
+    employment_status_blacklist: []
+
+  # 卡片预筛：只做卡片可见硬条件判断，不做评分。
+  card_prescreen:
+    enabled: true
+    active_status_keywords: ["刚刚活跃", "在线"]
+    max_age: null
+    min_degree: 本科
+    # 只收本科：硕士/博士一律在卡片阶段淘汰（AI 不判学历）。
+    degree_exact: 本科
+    city_keyword: 深圳
+    role_keywords: ["剪辑", "新媒体运营", "内容运营", "编导"]
+    recent_work_limit: 2
+    recent_work_position_keywords: ["剪辑", "运营", "编导", "拍剪", "内容"]
+    require_work_experience: true
+    require_graduation_year: 2027
+
+  # BOSS 推荐页右上角筛选面板配置（每次切换岗位后自动应用）
+  boss_filter:
+    not_viewed_14d: true
+    active_status:
+      - 刚刚活跃
+      - 在线
+    graduation_year: 2027
+    school_type: 公办本科
+    first_degree_only: true

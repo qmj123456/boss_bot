@@ -1,0 +1,39 @@
+message:
+  mode: preset
+  default_template: standard
+  templates:
+    standard: "您好，我们正在招聘主播。播品为 3C 保护壳类。
+                店铺排名前三！主播抖音平台！纯付费！
+                有成熟的主播晋升运营的机制！
+                直播间日销 700 单左右，客单价 150 元。数据超级好！
+                月休 6 天！直播间盈利稳定，每月稳定高提成。入职上社保。
+                无责底薪 10k 左右 + 最高提 GMV3% 提成，月均主播提成 2000-1w。
+                每周 1 次下午茶活动，节假日福利多多，团队氛围超级棒！
+                方便发下简历和切片，给您介绍下我们岗位吗？"
+    technical: "您好，您的经历和我们当前岗位比较契合，想邀请您简单交流一下。"
+    senior: "您好，您的经历和我们当前岗位比较契合，想邀请您简单交流一下。"
+  # 按岗位指定模板（优先级高于 default_template）
+  # 可填 templates 中的模板名，或直接写 message 内联消息
+  jobs:
+    全职主播:
+      template: standard
+    兼职主播:
+      template: standard
+    运营:
+      template: technical
+    亚马逊运营:
+      template: technical
+    tiktok运营:
+      template: technical
+    初级剪拍:
+      template: technical
+    运营助理:
+      template: technical
+    高级剪拍:
+      template: technical
+    客服:
+      template: technical
+    编导:
+      template: technical
+    渲染:
+      template: technical

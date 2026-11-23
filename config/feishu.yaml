@@ -1,0 +1,85 @@
+feishu:
+  app_id: ${FEISHU_APP_ID}
+  app_secret: ${FEISHU_APP_SECRET}
+  base_url: https://open.feishu.cn
+  # true 时可在已有 app_token 对应的多维表格应用内自动创建数据表。
+  auto_create_table: true
+  app_access_token_cache: data/feishu_app_token.json
+  tenant_access_token_cache: data/feishu_tenant_token.json
+  robot:
+    webhook_url: ${FEISHU_BOT_WEBHOOK}
+    secret: ${FEISHU_BOT_SECRET}
+  bitable:
+    app_token: ${FEISHU_BITABLE_APP_TOKEN}
+    table_id: ${FEISHU_BITABLE_TABLE_ID}
+    table_name: 招聘候选人
+    # 多岗位隔离：同一个 app_token 下，不同岗位写入不同数据表。
+    # key 必须和数据库 candidate.job / 命令 --job 的岗位名一致。
+    # table_id 留空时，如果 auto_create_table=true，会按 table_name 自动查找或创建。
+    job_tables:
+      全职主播:
+        table_id: ${FEISHU_TABLE_FULLTIME_ANCHOR}
+        table_name: 全职主播候选人
+      兼职主播:
+        table_id: ${FEISHU_TABLE_PARTTIME_ANCHOR}
+        table_name: 兼职主播候选人
+      运营:
+        table_id: ${FEISHU_TABLE_OPERATION}
+        table_name: 运营候选人
+      亚马逊运营:
+        table_id: ${FEISHU_TABLE_AMAZON_OPERATION}
+        table_name: 亚马逊运营候选人
+      tiktok运营:
+        table_id: ${FEISHU_TABLE_TIKTOK_OPERATION}
+        table_name: TikTok运营候选人
+      初级剪拍:
+        table_id: ${FEISHU_TABLE_JUNIOR_SHOOT_EDIT}
+        table_name: 初级剪拍候选人
+      运营助理:
+        table_id: ${FEISHU_TABLE_OPERATION_ASSISTANT}
+        table_name: 运营助理候选人
+      运营助理（前期需要在中控岗位轮岗）:
+        table_id: ${FEISHU_TABLE_OPERATION_ASSISTANT_ROTATION}
+        table_name: 运营助理（前期需要在中控岗位轮岗）候选人
+      高级剪拍:
+        table_id: ${FEISHU_TABLE_SENIOR_SHOOT_EDIT}
+        table_name: 高级剪拍候选人
+      客服:
+        table_id: ${FEISHU_TABLE_CUSTOMER_SERVICE}
+        table_name: 客服候选人
+      编导:
+        table_id: ${FEISHU_TABLE_BIANDAO}
+        table_name: 编导候选人
+      渲染:
+        table_id: ${FEISHU_TABLE_RENDER}
+        table_name: 渲染候选人
+  # 字段与 SQLite 一一对应：candidate 表基础字段 + card_prescreen_*（卡片预筛）
+  # + candidate_analysis 的 passed/reason/decision（简历硬性条件筛选）
+  # + greeting_record 的状态/招呼语/时间。旧评分列（卡片得分/打招呼得分等）
+  # 已废弃，ensure_candidate_fields 会尝试删除飞书表里的同名旧列。
+  fields:
+    boss_id: BOSS候选人ID
+    name: 姓名
+    age: 年龄
+    degree: 学历
+    work_years: 工作年限
+    city: 城市
+    expected_salary: 期望薪资
+    job: 岗位
+    sync_key: 同步键
+    company: 公司
+    current_title: 当前/期望岗位
+    card_prescreen_status: 卡片筛选状态
+    card_prescreen_passed: 卡片筛选结果
+    card_prescreen_reason: 卡片筛选原因
+    screening_stage: 筛选阶段
+    rejection_reason: 未通过原因
+    passed: 简历筛选结果
+    reason: 简历筛选原因
+    decision: 筛选结论
+    greeting_status: 发送状态
+    was_greeted: 是否已打招呼
+    greeting_message: 招呼语
+    greeting_date: 打招呼日期
+    reply_status: 回复状态
+    updated_time: 时间

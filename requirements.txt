@@ -1,0 +1,18 @@
+# BOSS 直聘 HR Skill 包 - Python 依赖
+# 安装: pip install -r requirements.txt
+# 注意：patchright 在此仅作为 CDP 客户端库使用，不需要执行 patchright install chromium
+
+# CDP 客户端库（连接已有浏览器，不下载 Chromium）
+patchright>=1.40
+
+# YAML 配置文件读取
+PyYAML>=6.0
+
+# 本地 SQLite ORM，后续可替换 PostgreSQL URL
+SQLAlchemy>=2.0
+
+# 在线简历弹层分段截图拼接为长图
+Pillow>=10.0
+
+# Windows 没有系统时区数据库，zoneinfo.ZoneInfo("Asia/Shanghai") 依赖此包
+tzdata>=2024.1
